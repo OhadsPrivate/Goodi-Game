@@ -1,0 +1,9 @@
+<div fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="center center">
+    <div matSnackBarLabel>
+        The records you asked for are ready!
+    </div>
+    <div matSnackBarActions fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="5px">
+        <button mat-raised-button matSnackBarAction (click)="watchRecords()">Watch now</button>
+        <button mat-raised-button matSnackBarAction (click)="dismiss()">Dismiss</button>
+    </div>
+</div>

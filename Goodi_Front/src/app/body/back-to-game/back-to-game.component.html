@@ -1,0 +1,12 @@
+<div class="cardContainer">
+    <div id="greetings">
+        <h1>Welcome back!</h1>
+        <h2 id="username">{{username}}</h2>
+        <h3>Wanna keep playing?</h3>
+    </div>
+    <div fxLayout="column" style="height: 154px;" fxLayoutAlign="space-evenly">
+        <button class="green-button" mat-raised-button (click)="rollTheDice()" [disabled]="disabledButtons" [ngClass]="{'green-button-disabled' : disabledButtons}">Roll Dice</button>
+        <button mat-raised-button (click)="startOver()" [disabled]="disabledButtons">Start Over</button>
+        <button mat-raised-button color="warn" (click)="logout()" [disabled]="disabledButtons">Logout</button>
+    </div>
+</div>

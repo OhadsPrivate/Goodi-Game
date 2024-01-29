@@ -1,0 +1,14 @@
+#bodyContainer{
+    min-height: calc(100svh - 138px);
+}
+#logoContainer, #logo, app-login{
+    width: 100%;
+}
+#logo{
+    max-width: 300px;
+}
+app-login, app-loading, app-back-to-game{
+    width: 100%;
+    max-width: 300px;
+    margin: 16px;
+}

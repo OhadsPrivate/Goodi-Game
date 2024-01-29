@@ -1,0 +1,13 @@
+<div id="bodyContainer" fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="10px">
+    <div id="logoContainer" fxLayout="row" fxLayoutAlign="center center">
+      <img id="logo" src="../assets/goodi_game_logo.png" />
+    </div>
+    <app-loading *ngIf="onLoad; else loaded"></app-loading>
+    <ng-template #loaded>
+        <ng-container *ngIf="!inGame">
+            <app-login *ngIf="!loggedIn"></app-login>
+            <app-back-to-game *ngIf="loggedIn"></app-back-to-game>
+        </ng-container>
+        <app-game *ngIf="inGame"></app-game>
+    </ng-template>
+</div>

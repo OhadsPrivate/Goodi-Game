@@ -1,0 +1,23 @@
+<div id="myLastTurns" class="cardContainer" fxLayout="column" fxLayoutAlign="center center">
+    <div>
+        <h1>My Last Turns</h1>
+    </div>
+    <div id="turnsTableDiv" >
+        <table>
+            <thead>
+                <tr>
+                    <th class="turnIndex" colspan="1">#</th>
+                    <th class="cube" colspan="6">Dice</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let turn of myLastTurns | reverse; let i = index">
+                    <td class="turnIndex">{{myLastTurns.length - i}}</td>
+                    <td *ngFor="let cube of turn" class="cube">
+                        {{cube.value}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

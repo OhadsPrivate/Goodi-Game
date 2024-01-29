@@ -1,0 +1,37 @@
+/* You can add global styles to this file, and also import other style files */
+html, body { height: 100%; margin: 0; padding: 0;}
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.green-button{
+    background-color: #95a60c !important;
+    color: #FFF !important;
+}
+.green-button-disabled{
+    background-color: rgba(149,166,12,.36) !important;
+}
+
+.cardContainer{
+    box-shadow: 0px 2px 5px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+    border-radius: 4px;
+    padding: 16px;
+    background-color: #fff;
+}
+
+.snackbar-custom{
+    .mdc-snackbar__surface {
+        background-color: #d90429 !important;
+    }
+    .mdc-snackbar__label {
+        color: white !important;
+        text-align: center;
+    }
+}
+#confetti-canvas {
+    position: fixed;
+    bottom:   0;
+    left:     0;
+    height:   100%;
+    width:    100%;
+    z-index: 2000;
+    pointer-events:none;
+}

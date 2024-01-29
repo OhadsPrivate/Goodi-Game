@@ -1,0 +1,15 @@
+<div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="15px">
+    <app-summary></app-summary>
+    <div id="cubes" fxLayout="row wrap" fxLayoutAlign="center center">
+        <app-cube *ngFor="let cube of currentDice;" [value]="cube.value"></app-cube>
+    </div>
+    <div id="buttons" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="50px">
+        <button class="green-button" mat-raised-button (click)="rollTheDice()" [disabled]="disabledButtons" [ngClass]="{'green-button-disabled' : disabledButtons}">Roll Dice</button>
+        <button mat-raised-button (click)="finishGame()" [disabled]="currentTurnIndex < MINIMUM_TURNS || disabledButtons">Finish!</button>
+    </div>
+    <div id="lastTurn" fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="center center" fxLayoutGap="20px" fxLayoutGap.gt-sm="0px">
+        <app-my-last-turns></app-my-last-turns>
+        <app-my-lucky-number></app-my-lucky-number>
+    </div>
+</div>
+<canvas id="confetti-canvas"></canvas>

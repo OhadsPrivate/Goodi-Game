@@ -1,0 +1,55 @@
+#gamesList{
+    width: 100%; 
+    max-width: 400px;
+    text-align: center;
+}
+
+#gamesTableDiv{
+    width: 100%;
+    height: 243px;
+    overflow: auto;
+    overflow-y: overlay;
+    scroll-behavior: smooth;
+    //Firefox
+    scrollbar-color: #c4c6c7 #f2f1ef;
+    scrollbar-width: thin;
+    border: 1px solid rgba(0,0,0,.12);;
+}
+
+//ScrollBar
+#gamesTableDiv::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+    background-color: #f2f1ef;
+    border-radius: 5px; 
+}
+#gamesTableDiv::-webkit-scrollbar {
+    height: 5px;
+    width:5px;
+    background-color: #F5F5F5; 
+}   
+#gamesTableDiv::-webkit-scrollbar-thumb {
+    border-radius: 2px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+    background-color: #c4c6c7; 
+}
+
+table{
+    width: 100%;
+    border-collapse:separate;
+    border-spacing: 0;
+    text-align: center;
+    th{
+        height: 56px;
+    }
+    th,td{
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+        border-bottom-color: rgba(0,0,0,.12);
+    }
+    .index{
+        width: 90px;
+        border-right-width: 1px;
+        border-right-style: solid;
+        border-right-color: rgba(0,0,0,.12);
+    }
+}

@@ -1,0 +1,18 @@
+<h1 mat-dialog-title>Display All Records</h1>
+<div mat-dialog-content fxLayout="column" fxLayoutGap="10px">
+    <div>
+        <mat-radio-group [(ngModel)]="radioOption" color="warn" fxLayout="column">
+            <mat-radio-button value="ME">My records</mat-radio-button>
+            <mat-radio-button value="OTHER">Others Records</mat-radio-button>
+        </mat-radio-group>
+        <mat-form-field>
+            <input type="text" [(ngModel)]="otherUser" (ngModelChange)="clearError()" matInput placeholder="Username" [disabled]="radioOption != 'OTHER'"/>
+        </mat-form-field>
+        <div id="info" *ngIf="jobInfo.msg" [ngClass]="jobInfo.status == 'SENT' ? 'success' : 'error'">
+            {{jobInfo.msg}}
+        </div>
+    </div>
+    <div fxLayout="row">
+        <button class="green-button" mat-raised-button (click)="insertJob()">Ask For Records!</button>
+    </div>
+</div>

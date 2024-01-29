@@ -1,0 +1,27 @@
+<div id="gamesList" class="cardContainer" fxLayout="column" fxLayoutAlign="center center">
+    <div>
+        <h1>{{username}} Records List</h1>
+    </div>
+    <div id="gamesTableDiv" >
+        <table>
+            <thead>
+                <tr>
+                    <th class="index" colspan="1">Game</th>
+                    <th class="index" colspan="1">#</th>
+                    <th class="cube" colspan="6">Dice</th>
+                </tr>
+            </thead>
+            <tbody>
+                <ng-container *ngFor="let game of games; let i = index">
+                    <tr *ngFor="let turn of game.turns; let j = index">
+                        <td class="index">{{j == 0 ? game.game_id : ''}}</td>
+                        <td class="index">{{j + 1}}</td>
+                        <td *ngFor="let cube of turn" class="cube">
+                            {{cube}}
+                        </td>
+                    </tr>
+                </ng-container>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,86 @@
+version: "3.8"
+services:
+    mongodb:
+        image: mongo:6.0.2
+        hostname: mongodb
+        container_name: mongodb
+        command: mongod --auth
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: Goodi
+            MONGO_INITDB_ROOT_PASSWORD: ThisIsVeryStrongPasswordForGoodi.com@$$
+            MONGO_INITDB_DATABASE: Goodi_DB
+        volumes:
+         - MONGODB:/data/db
+         - MONGODBCONFIG:/data/configdb
+         - ./services/mongodb/init-db.js:/docker-entrypoint-initdb.d/init-db.js:ro
+        networks:
+        - backend
+    gunicorn:
+        build: 
+            context: ./services/gunicorn
+            dockerfile: Dockerfile
+            x-bake:
+                output: type=image,compression=zstd
+                no-cache: true
+        container_name: gunicorn
+        command: python Manage.py run -h 0.0.0.0
+        volumes:
+            - STORAGE:/home/goodigame/storage
+        ports:
+            - 5000:5000
+        environment:
+            FLASK_APP: Server/__init__.py
+            FLASK_DEBUG: 0
+            MONGODB_HOSTNAME: mongodb
+            MONGODB_USERNAME: Goodi
+            MONGODB_PASSWORD: ThisIsVeryStrongPasswordForGoodi.com@$$
+            MONGODB_DATABASE: Goodi_DB
+        depends_on:
+         - mongodb
+        networks:
+         - frontend
+         - backend
+    queue_worker:
+        build: 
+            context: ./services/queue_worker
+            dockerfile: Dockerfile
+             x-bake:
+                output: type=image,compression=zstd
+                no-cache: true
+        container_name: queue_worker
+        command: python queue_worker.py run
+        volumes:
+            - /var/run/docker.sock:/var/run/docker.sock
+        environment:
+            FLASK_APP: Server/__init__.py
+            FLASK_DEBUG: 0
+            MONGODB_HOSTNAME: mongodb
+            MONGODB_USERNAME: Goodi
+            MONGODB_PASSWORD: ThisIsVeryStrongPasswordForGoodi.com@$$
+            MONGODB_DATABASE: Goodi_DB
+        depends_on:
+         - mongodb
+        networks:
+         - backend
+    nginx:
+        build: 
+            context: ./services/nginx
+            dockerfile: Dockerfile
+        container_name: nginx
+        volumes:
+            - STORAGE:/home/goodigame/storage
+        ports:
+            - 80:80
+            - 443:443
+        networks:
+         - frontend
+networks:
+    frontend:
+        driver: bridge
+    backend:
+        driver: bridge
+volumes:
+    STORAGE:
+    MONGODB:
+    MONGODBCONFIG:
+    CERTBOT:

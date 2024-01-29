@@ -1,0 +1,13 @@
+<div id="navbarContainer" fxLayout="row" fxLayoutAlign="space-between center">
+    <div class="side-button">
+        <button id="logoutButton" *ngIf="inGame" mat-icon-button (click)="logout()">
+            <mat-icon>power_settings_new</mat-icon>
+        </button>
+    </div>
+    <div id="title">
+        Cutting edge online game. Goodi.
+    </div>
+    <div class="side-button">
+        <app-records *ngIf="inGame && !isDemoMode"></app-records>
+    </div>
+</div>
